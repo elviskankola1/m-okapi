@@ -1,9 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MOkapi extends CI_Controller
-{
+class MOkapi extends CI_Controller{
+
+
     public function index(){
+        $this->load->view('mokapi_home');
+    }
+
+
+
+    public function Create_Account(){
 
         $name_user = strip_tags($this->input->post('nom'));
         $email_user = strip_tags($this->input->post('email'));
