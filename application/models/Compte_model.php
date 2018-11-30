@@ -19,10 +19,11 @@
      ===============================================================================*/
         public function Create_Account_User($nom_user, $pseudo_user,$email_user, $password_user){
 
-            $this->db->set('comcomplet',$nom_user);
+            $this->db->set('nomcomplet',$nom_user);
             $this->db->set('login',$pseudo_user);
             $this->db->set('email',$email_user);
             $this->db->set('mdp',$password_user);
+            $this->db->set('etat',1);
             return $this->db->insert($this->table_user);
 
         }
@@ -31,8 +32,12 @@
      ===============================================================================*/
         public function Sign_In_User($login ='', $pass =''){
 
-            $query = $this->db->where(['login'=>$login,'pass'=>$pass])->get($this->table_user)->result();
-            return $query;
+            $query = $this->db->where(['login'=>$login,'mdp'=>$pass])->get($this->table_user)->result();
+            if( $query == true){
+                return true;
+            }else{
+                return false;
+            }
         }
 
        
