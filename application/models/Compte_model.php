@@ -8,7 +8,7 @@
             ICI LES ATTRIBUTS  DE LA CLASSE REPRESENTANT DE TABLE DE LA DB 
      ===============================================================================*/
         private $table_connexion = 'login';
-    
+        private $table_user = 'user';
     /*=============================================================================
             ICI LE CONSTRUCTEUR DE LA CLASSE 
      ===============================================================================*/
@@ -18,8 +18,13 @@
     /*=============================================================================
             ICI L' ACTION DE CREATION DU COMPTE 
      ===============================================================================*/
-        public function Create_Account_User(){
+        public function Create_Account_User($nom_user,$email_user, $pseudo_user, $password_user){
 
+            $this->db->set('',$nom_user);
+            $this->db->set('',$email_user);
+            $this->db->set('',$pseudo_user);
+            $this->db->set('',$password_user);
+            return $this->db->insert($this->table_user);
 
         }
     /*=============================================================================
