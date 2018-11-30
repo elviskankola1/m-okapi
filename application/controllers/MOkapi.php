@@ -13,7 +13,13 @@ class MOkapi extends CI_Controller{
             ICI ACTION  DE LA CLASSE REPRESENTANT DE LA MAIN PAGE 
      ===============================================================================*/
     public function index(){
-        $this->load->view('mokapi_home');
+        $this->load->view('user/main');
+    }
+    public function form_inscription(){
+        $this->load->view('user/mokapi_home');
+    }
+    public function form_auth(){
+        $this->load->view('user/auth');
     }
     /*=============================================================================
             ICI L'ACTION DE CREATION D'UN COMPTE
@@ -24,8 +30,8 @@ class MOkapi extends CI_Controller{
         $name_user = strip_tags($this->input->post('nom'));
         $email_user = strip_tags($this->input->post('email'));
         $pseudo_user = strip_tags($this->input->post('pseudo'));
-        $pass_user = sha1($this->input->post('pwd'));
-        $confirm_pass_user = sha1($this->input->post('pwdc'));
+        $pass_user = $this->input->post('pwd');
+        $confirm_pass_user = $this->input->post('pwdc');
         if ($pass_user == $confirm_pass_user && filter_var($email_user,FILTER_VALIDATE_EMAIL)) {
             $verify_user_exist =  $this->compte_model->Sign_In_User($pseudo_user,$pass_user);
             if ($verify_user_exist == false) {
@@ -34,7 +40,7 @@ class MOkapi extends CI_Controller{
                 echo "VOUS AVEZ CREE UN COMPTE ET BIENVENU CHEZ NOUS!";
             }
         }else{
-            redirect('HTTP_FERERER');
+            redirect($_SERVER['HTTP_REFERER'']);
         }
     }
 
@@ -44,17 +50,14 @@ class MOkapi extends CI_Controller{
     public function Login_In_Account(){
 
         $pseudo_user = strip_tags($this->input->post('pseudo'));
-        $pass_user = sha1($this->input->post('pwd'));
+        $pass_user = $this->input->post('pwd');
         $user =  $this->compte_model->Sign_In_User($pseudo_user,$pass_user);
-        if($user){
+        if($user == true){
             echo "vous etes bien sur votre compte!";
         }else{
-            redirect('HTTP_FERERER');
+            redirect($_SERVER['HTTP_REFERER']);
         }
-
-    }
-    /*=============================================================================
-             AJOUTER AUSSI LES FONCTIONNALITES DEMANDEES EN BAS SVP! 
-     ===============================================================================*/ 
     }
 }
+
+    
