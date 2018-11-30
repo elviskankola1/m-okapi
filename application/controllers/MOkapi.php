@@ -11,8 +11,14 @@ class MOkapi extends CI_Controller
         $pass_user = sha1($this->input->post('pwd'));
         $confirm_pass_user = sha1($this->input->post('pwdc'));
         if ($pass_user == $confirm_pass_user && filter_var($email_user,FILTER_VALIDATE_EMAIL)) {
-            $this->compte_model->Create_Account_User($name_user,$email_user, $pseudo_user, $password_user);
-            echo "VOUS AVEZ CREE UN COMPTE ET BIENVENU CHEZ NOUS!";
+            $verify_user_exist =  $this->compte_model->Sign_In_User($pseudo,$pass_user);
+            if (!$verify_user_exist) {
+
+                $this->compte_model->Create_Account_User($name_user,$email_user, $pseudo_user, $password_user);
+                echo "VOUS AVEZ CREE UN COMPTE ET BIENVENU CHEZ NOUS!";
+            }
+            
+           echo "LE PSEUDO EXISTE DEJA";
         }
         echo "CHECK YOUR EMAIL OR YOUR CONFIRM PASS";
     }
