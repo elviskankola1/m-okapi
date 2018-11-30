@@ -36,9 +36,11 @@ class MOkapi extends CI_Controller{
         }else{
             redirect('HTTP_FERERER');
         }
+    }
+
     /*=============================================================================
-            ICI L'ACTION DE SE LOGER PAR UN USER
-     ===============================================================================*/
+            ICI L'ACTION DE SE LOGER
+    ===============================================================================*/
     public function Login_In_Account(){
 
         $pseudo_user = strip_tags($this->input->post('pseudo'));
