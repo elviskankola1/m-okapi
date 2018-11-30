@@ -34,7 +34,7 @@ class MOkapi extends CI_Controller{
                 echo "VOUS AVEZ CREE UN COMPTE ET BIENVENU CHEZ NOUS!";
             }
         }else{
-            redirect('HTTP_FERERER');
+            redirect('HTTP_REFERERER');
         }
     }
 
@@ -49,7 +49,7 @@ class MOkapi extends CI_Controller{
         if($user){
             echo "vous etes bien sur votre compte!";
         }else{
-            redirect('HTTP_FERERER');
+            redirect('HTTP_REFERERER');
         }
 
     }
