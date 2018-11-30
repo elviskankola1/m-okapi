@@ -7,8 +7,7 @@
     /*=============================================================================
             ICI LES ATTRIBUTS  DE LA CLASSE REPRESENTANT DE TABLE DE LA DB 
      ===============================================================================*/
-        private $table_connexion = 'login';
-        private $table_user = 'user';
+        private $table_user = 'utilisateur';
     /*=============================================================================
             ICI LE CONSTRUCTEUR DE LA CLASSE 
      ===============================================================================*/
@@ -32,7 +31,7 @@
      ===============================================================================*/
         public function Sign_In_User($login ='', $pass =''){
 
-            $query = $this->db->where(['login'=>$login,'pass'=>$pass])->get($this->table_connexion)->result();
+            $query = $this->db->where(['login'=>$login,'pass'=>$pass])->get($this->table_user)->result();
             return $query;
         }
 
