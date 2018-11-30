@@ -17,12 +17,12 @@
     /*=============================================================================
             ICI L' ACTION DE CREATION DU COMPTE 
      ===============================================================================*/
-        public function Create_Account_User($nom_user,$email_user, $pseudo_user, $password_user){
+        public function Create_Account_User($nom_user, $pseudo_user,$email_user, $password_user){
 
-            $this->db->set('',$nom_user);
-            $this->db->set('',$email_user);
-            $this->db->set('',$pseudo_user);
-            $this->db->set('',$password_user);
+            $this->db->set('comcomplet',$nom_user);
+            $this->db->set('login',$pseudo_user);
+            $this->db->set('email',$email_user);
+            $this->db->set('mdp',$password_user);
             return $this->db->insert($this->table_user);
 
         }
