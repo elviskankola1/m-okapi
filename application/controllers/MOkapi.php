@@ -40,7 +40,7 @@ class MOkapi extends CI_Controller{
                 echo "VOUS AVEZ CREE UN COMPTE ET BIENVENU CHEZ NOUS!";
             }
         }else{
-            redirect($_SERVER['HTTP_REFERER'']);
+            redirect($_SERVER['HTTP_REFERER']);
         }
     }
 
@@ -52,7 +52,7 @@ class MOkapi extends CI_Controller{
         $pseudo_user = strip_tags($this->input->post('pseudo'));
         $pass_user = $this->input->post('pwd');
         $user =  $this->compte_model->Sign_In_User($pseudo_user,$pass_user);
-        if($user == true){
+        if($user){
             echo "vous etes bien sur votre compte!";
         }else{
             redirect($_SERVER['HTTP_REFERER']);
