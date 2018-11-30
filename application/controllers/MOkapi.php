@@ -3,14 +3,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MOkapi extends CI_Controller{
 
+    /*=============================================================================
+            ICI LE CONSTRUCTEUR DE LA CALSS
+     ===============================================================================*/
     function __construct(){
         parent::__construct();
     }
+    /*=============================================================================
+            ICI ACTION  DE LA CLASSE REPRESENTANT DE LA MAIN PAGE 
+     ===============================================================================*/
     public function index(){
         $this->load->view('mokapi_home');
     }
-
-
+    /*=============================================================================
+            ICI L'ACTION DE CREATION D'UN COMPTE
+    ===============================================================================*/
 
     public function Create_Account(){
 
@@ -29,7 +36,9 @@ class MOkapi extends CI_Controller{
         }else{
             redirect('HTTP_FERERER');
         }
-    
+    /*=============================================================================
+            ICI L'ACTION DE SE LOGER PAR UN USER
+     ===============================================================================*/
     public function Login_In_Account(){
 
         $pseudo_user = strip_tags($this->input->post('pseudo'));
@@ -42,6 +51,8 @@ class MOkapi extends CI_Controller{
         }
 
     }
-        
+    /*=============================================================================
+             AJOUTER AUSSI LES FONCTIONNALITES DEMANDEES EN BAS SVP! 
+     ===============================================================================*/ 
     }
 }
